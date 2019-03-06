@@ -1,4 +1,4 @@
-public class SampleClien {
+public class SampleClients {
 
     /**
      * @param args
