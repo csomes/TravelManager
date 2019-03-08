@@ -4,4 +4,4 @@ public enum SeatClass {
     business,
     first,
     economy
-}
+    }

@@ -8,9 +8,9 @@ public class Seat {
 
     public Seat(int row, int column) {
         if(row < 1 || row > 100)
-            throw new RowOutOfBoundariesException();
+            throw new RowOutOfBoundsException("Rows out of range(1,100):Seat");
         if(column < 1 || column > 10)
-            throw new ColumnOutOfBoundariesException();
+            throw new ColumnOutOfBoundsException("Columns out of range(1,10):Seat");
 
         this.ID = row + String.valueOf((char)(64+column));
         booked = false;
@@ -29,7 +29,7 @@ public class Seat {
             booked = true;
             return true;
         } else {
-            throw new SeatBookedException();
+            return false;
         }
     }
 }
