@@ -4,37 +4,20 @@ import java.util.*;
 
 public class SystemManager {
 	public List<Airport> airports = new ArrayList<Airport>(); 
-	public List<Airline> airlines = new ArrayList<Airline>(); 
 	
-    public void createAirport(String name) {
-    	//How should we handle this if we don't use a Try-Catch? is this implementation OK?
+    public void createAirport(String name) throws Exception {
     	Airport airport = new Airport(name);
-    	
     	for(Airport i: airports) {
     		if(airport.getName().equals(i.getName())){
-    			System.out.println("Airport creation failed");
-    			throw new RuntimeException("Duplicate Airport name"); 
+    			throw new Exception("Duplicate Airport name"); 
+    		} else {
+    			airports.add(airport); 
     		}
     	}
-    	
-    	airports.add(airport); 
-    	System.out.println("Airport " + airport.getName() + " created successfully"); 
     	
     }
     
     public void createAirline(String name) {
-    	
-    	Airline airline = new Airline(name);
-    	
-    	for(Airline i: airlines) {
-    		if(airline.getName().equals(i.getName())){
-    			System.out.println("Airline creation failed");
-    			throw new RuntimeException("Duplicate Airline name"); 
-    		}
-    	}
-    	
-    	airlines.add(airline); 
-    	System.out.println("Airline " + airline.getName() + " created successfully"); 
     	
     }
     public void createFlight(String name1, String name2, String name3, int num1, int num2, int num3, String name4) {}
