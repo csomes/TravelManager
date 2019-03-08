@@ -49,7 +49,6 @@ public class SystemManager {
     	}
     	
     }
->>>>>>> colt-branch
     public void createFlight(String name1, String name2, String name3, int num1, int num2, int num3, String name4) {}
 
     public void createSection(String airline, String flightID, int rows, int cols, SeatClass seatClass) {
