@@ -17,8 +17,8 @@ public class Section {
         this.seatClass = seatClass;
     }
 
-    public String getSeatClass() {
-        return seatClass.name();
+    public SeatClass getSeatClass() {
+        return seatClass;
     }
 
     public boolean hasAvailableSeats() {

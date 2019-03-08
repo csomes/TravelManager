@@ -36,7 +36,7 @@ public class Flight {
 	public boolean bookSeat(SeatClass seatClass, int row, int col) {
 		Section sec = null;
 		for(Section i: sections) {
-			if(i.getSeatClass() == seatClass) {
+			if(i.getSeatClass() == (seatClass)) {
 				sec = i;
 			} else {
 				throw new RuntimeException("Invalid SeatClass");

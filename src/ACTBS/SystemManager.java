@@ -1,6 +1,6 @@
 package ACTBS;
 
-import java.util.List;
+import java.util.*;
 
 import ACTBS.SystemExceptions.*;
 
