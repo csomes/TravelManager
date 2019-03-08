@@ -44,7 +44,7 @@ public class Airline {
 	}
 	
 	public boolean addFlight(String origin, String destination, int year, int month, int day, String fID) {
-		Flight f = new Flight(fID, origin, destination, year, day, month);
+		Flight f = new Flight(this.getName(), origin, destination, year, day, month, fID);
 		for(Flight i : flightList) {
 			if(fID.equals(i.getfID())) {
 				throw new RuntimeException("Duplicate Flight ID"); 

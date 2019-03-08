@@ -24,7 +24,7 @@ public class SystemManager {
         	airports.add(airport); 
         	System.out.println("Airport " + airport.getName() + " created successfully"); 
     	}catch(RuntimeException R) {
-    		System.out.println(R);
+    		System.out.println(R.getMessage());
     	}
     	
     	
@@ -45,11 +45,27 @@ public class SystemManager {
     		airlines.add(airline); 
     		System.out.println("Airline " + airline.getName() + " created successfully"); 
     	}catch(RuntimeException R) {
-    		System.out.println(R);
+    		System.out.println(R.getMessage());
     	}
     	
     }
-    public void createFlight(String name1, String name2, String name3, int num1, int num2, int num3, String name4) {}
+    public void createFlight(String aname, String orig, String dest, int year, int month, int day, String fID) {
+    	try {
+    		if(dest.equals(orig)) {
+    			throw new RuntimeException("Origin and Destination are the same"); 
+    		}
+    		
+    		for(Airline i: airlines) {
+    			if(aname.equals(i.getName())) {
+    				i.addFlight(orig, dest, year, month, day, fID); 
+    			} else {
+    				throw new RuntimeException("Airline "+ aname + " does not exist!");  
+    			}
+    		}
+    	}catch(RuntimeException R) {
+    		System.out.println(R.getMessage());
+    	}
+    }
 
     public void createSection(String airline, String flightID, int rows, int cols, SeatClass seatClass) {
 
@@ -65,7 +81,22 @@ public class SystemManager {
 
         }
     }
-    public void findAvailableFlights(String num1, String num2) {}
+    
+    public void findAvailableFlights(String orig, String dest) {
+    	
+    	for(Airline i: airlines) {
+    		if(i.findFlights(orig, dest).size() == 0) {
+    			System.out.println("No Available Flights"); 
+    		}else {
+    			for(Flight f: i.findFlights(orig, dest)) {
+    				System.out.println("Airline: " + i);
+    				System.out.println("Origin: " + orig);
+    				System.out.println("Destination: " + dest);
+    				System.out.println("Date: " + f.getDate());
+    			}
+    		}
+    	}
+    }
     public void bookSeat(String airline, String flightID, SeatClass seatClass, int row, char col) {
 
     }

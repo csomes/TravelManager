@@ -4,11 +4,12 @@ import java.util.*;
 
 public class Flight {
 	
-	private String _origin, _destination, _fID;
+	private String _origin, _destination, _fID, _airline;
 	private int _year, _day, _month;
 	private List<Section> sections; 
 	
-	public Flight(String fID,String origin, String destination, int year, int day, int month) {
+	public Flight(String airline, String origin, String destination, int year, int day, int month, String fID) {
+		this._airline = airline;
 		this._fID = fID;
 		this._origin = origin;
 		this._destination = destination;
@@ -23,6 +24,14 @@ public class Flight {
 	
 	public String getOrigin() {
 		return this._origin;
+	}
+	
+	public String getDate() {
+		return _month + " / " + _day + " / " + _year;
+	}
+	
+	public List<Section> getSections(){
+		return this.sections;
 	}
 	
 	public String getDestination() {
