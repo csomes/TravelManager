@@ -1,5 +1,6 @@
 package ACTBS;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import ACTBS.SystemExceptions.*;
@@ -55,10 +56,34 @@ public class SystemManager {
     			throw new RuntimeException("Origin and Destination are the same"); 
     		}
     		
+    		boolean validOrig = false; 
+    		boolean validDest = false; 
+    		for(Airport a: airports) {
+    			if(a.getName().equals(orig)) {
+    				validOrig = true;
+    			}
+    			if(a.getName().equals(dest)) {
+    				validDest = true;
+    			}
+    		}
+    		
+    		if(validDest == false || validOrig == false) {
+    			throw new RuntimeException("Either Origin or Destination (or both) of Flight are not valid"); 
+    		}
+    		
+    		LocalDate localDate = LocalDate.now();
+    		if(year < localDate.getYear() ) {
+    			throw new RuntimeException("Invalid Date");
+    		}
+    		if( (month > 12 || day > 31) || (month < 0 || day < 0)) {
+    			throw new RuntimeException("Invalid Date");
+    		}
+    		
+    		
     		for(Airline i: airlines) {
     			if(aname.equals(i.getName())) {
     				i.addFlight(orig, dest, year, month, day, fID); 
-    			} else {
+    			}else {
     				throw new RuntimeException("Airline "+ aname + " does not exist!");  
     			}
     		}
