@@ -4,16 +4,17 @@ import java.util.*;
 
 public class Flight {
 	
-	private String _origin, _destination;
+	private String _origin, _destination, _fID;
 	private int _year, _day, _month;
 	private List<Section> sections; 
 	
-	public Flight(String _origin, String _destination, int _year, int _day, int _month) {
-		this._origin = _origin;
-		this._destination = _destination;
-		this._year = _year;
-		this._day = _day;
-		this._month = _month;
+	public Flight(String fID,String origin, String destination, int year, int day, int month) {
+		this._fID = fID;
+		this._origin = origin;
+		this._destination = destination;
+		this._year = year;
+		this._day = day;
+		this._month = month;
 	}
 	
 	public boolean hasAvailableSection(){
@@ -24,17 +25,21 @@ public class Flight {
 		return this._origin;
 	}
 	
-	public String getdestination() {
+	public String getDestination() {
 		return this._destination;
 	}
 	
-	public boolean bookSeat(SeatClass seatClass, int row, int col) throws Exception {
+	public String getfID() {
+		return this._fID; 
+	}
+	
+	public boolean bookSeat(SeatClass seatClass, int row, int col) {
 		Section sec = null;
 		for(Section i: sections) {
 			if(i.getSeatClass() == seatClass) {
 				sec = i;
 			} else {
-				throw new Exception("Invalid SeatClass");
+				throw new RuntimeException("Invalid SeatClass");
 			}
 		}
 		

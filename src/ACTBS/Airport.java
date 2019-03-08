@@ -3,9 +3,11 @@ public class Airport {
 	
 	private String _name; 
 	
-	public Airport(String name) throws Exception {
+	public Airport(String name) {
 		if(name.length() != 3) {
-			throw new Exception("Name length is wrong"); 
+			throw new RuntimeException("Name length not 3"); 
+		} else if(!name.matches("[a-zA-Z]+")) {
+			throw new RuntimeException("Airport Name cannot contain Numbers or symbols"); 
 		}
 		
 		this._name = name;
